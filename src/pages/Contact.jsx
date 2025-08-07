@@ -194,15 +194,15 @@ const Contact = () => {
             {/* Contact Form */}
             <motion.div variants={itemVariants} className="fade-in-on-scroll">
               <div className="form-card">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
-                  <MessageCircle size={24} className="mr-2 text-primary-600" />
+                <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
+                  <MessageCircle size={28} className="mr-3 text-primary-600" />
                   Send a Message
                 </h3>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      <label htmlFor="name" className="form-label">
                         Name *
                       </label>
                       <input
@@ -212,12 +212,12 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-dark-900 dark:text-white transition-colors"
-                        placeholder="Your name"
+                        className="form-input"
+                        placeholder="Your full name"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      <label htmlFor="email" className="form-label">
                         Email *
                       </label>
                       <input
@@ -227,14 +227,14 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-dark-900 dark:text-white transition-colors"
+                        className="form-input"
                         placeholder="your@email.com"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label htmlFor="subject" className="form-label">
                       Subject *
                     </label>
                     <input
@@ -244,13 +244,13 @@ const Contact = () => {
                       value={formData.subject}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-dark-900 dark:text-white transition-colors"
+                      className="form-input"
                       placeholder="What's this about?"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label htmlFor="message" className="form-label">
                       Message *
                     </label>
                     <textarea
@@ -260,7 +260,7 @@ const Contact = () => {
                       onChange={handleInputChange}
                       required
                       rows={6}
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-dark-900 dark:text-white transition-colors resize-none"
+                      className="form-textarea"
                       placeholder="Tell me about your project or what you'd like to discuss..."
                     />
                   </div>
@@ -270,7 +270,7 @@ const Contact = () => {
                     disabled={isSubmitting}
                     whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
                     whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                    className={`w-full btn-primary flex items-center justify-center space-x-2 ${
+                    className={`w-full btn-primary flex items-center justify-center space-x-2 py-4 text-lg font-semibold ${
                       isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
                     }`}
                   >
@@ -294,15 +294,15 @@ const Contact = () => {
           {/* CTA Section */}
           <motion.div variants={itemVariants} className="mt-16 text-center">
             <div className="cta-card bg-gradient-to-r from-primary-600 to-blue-600 text-white">
-              <h3 className="text-2xl font-bold mb-4">Ready to Start a Project?</h3>
-              <p className="text-lg text-primary-100 mb-6">
+              <h3 className="text-3xl font-bold mb-6">Ready to Start a Project?</h3>
+              <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto leading-relaxed">
                 Let's bring your ideas to life with cutting-edge technology and innovative solutions
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <motion.a
                   href={personalInfo.social.email}
                   whileHover={{ scale: 1.05 }}
-                  className="px-6 py-3 bg-white text-primary-600 rounded-lg font-medium hover:bg-gray-100 transition-colors"
+                  className="px-8 py-4 bg-white text-primary-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors text-lg"
                 >
                   Email Me Directly
                 </motion.a>
@@ -311,11 +311,48 @@ const Contact = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
-                  className="px-6 py-3 bg-white/20 backdrop-blur-sm rounded-lg font-medium hover:bg-white/30 transition-colors"
+                  className="px-8 py-4 bg-white/20 backdrop-blur-sm rounded-lg font-semibold hover:bg-white/30 transition-colors text-lg"
                 >
                   Connect on LinkedIn
                 </motion.a>
               </div>
+            </div>
+          </motion.div>
+
+          {/* Newsletter Subscribe Section */}
+          <motion.div variants={itemVariants} className="mt-12">
+            <div className="form-card max-w-2xl mx-auto">
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                  Stay Updated
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Subscribe to get notified about new projects, articles, and tech insights
+                </p>
+              </div>
+              
+              <form className="flex flex-col sm:flex-row gap-4">
+                <div className="flex-1">
+                  <input
+                    type="email"
+                    placeholder="Enter your email address"
+                    className="form-input"
+                    required
+                  />
+                </div>
+                <motion.button
+                  type="submit"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="btn-primary px-8 py-3 whitespace-nowrap font-semibold"
+                >
+                  Subscribe
+                </motion.button>
+              </form>
+              
+              <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-4">
+                No spam, unsubscribe at any time
+              </p>
             </div>
           </motion.div>
         </motion.div>

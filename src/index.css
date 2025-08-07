@@ -271,18 +271,19 @@ a:hover {
 
 .section-title {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   text-align: center;
+  line-height: 1.1;
 }
 
 .section-subtitle {
-  font-size: var(--text-lg);
+  font-size: var(--text-xl);
   color: #555;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -1548,16 +1549,100 @@ html {
 .form-card {
   background-color: var(--gray-50);
   border-radius: var(--radius-xl);
-  padding: var(--space-8);
+  padding: var(--space-10);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
 }
 
 .dark .form-card {
   background-color: var(--dark-800);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .cta-card {
   border-radius: var(--radius-xl);
   padding: var(--space-8);
+}
+
+/* ===== ENHANCED FORM STYLES ===== */
+.form-input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 2px solid #e2e8f0;
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #ffffff;
+  color: var(--text-primary);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.dark .form-input {
+  background-color: var(--dark-900);
+  border-color: var(--dark-600);
+  color: var(--text-white);
+}
+
+.dark .form-input:focus {
+  border-color: var(--primary-400);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2), 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.form-label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.025em;
+}
+
+.dark .form-label {
+  color: var(--text-gray-300);
+}
+
+.form-textarea {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 2px solid #e2e8f0;
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #ffffff;
+  color: var(--text-primary);
+  resize: none;
+  min-height: 140px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-family: inherit;
+}
+
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.dark .form-textarea {
+  background-color: var(--dark-900);
+  border-color: var(--dark-600);
+  color: var(--text-white);
+}
+
+.dark .form-textarea:focus {
+  border-color: var(--primary-400);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2), 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* ===== END OF ELITE CSS FRAMEWORK ===== */
