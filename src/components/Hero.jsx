@@ -34,8 +34,24 @@ const Hero = () => {
   };
 
   const handleDownloadCV = () => {
-    // This would typically download a real CV file
-    alert('CV download would start here! Replace with actual CV file.');
+    // Create a link to download the resume
+    const resumeUrl = '/resume.pdf'; // This will look for resume.pdf in the public folder
+    const link = document.createElement('a');
+    link.href = resumeUrl;
+    link.download = 'resume.pdf';
+    link.click();
+    
+    // Fallback if no resume file exists - show message
+    setTimeout(() => {
+      const testLink = document.createElement('a');
+      testLink.href = resumeUrl;
+      testLink.onload = () => {
+        console.log('Resume downloaded successfully');
+      };
+      testLink.onerror = () => {
+        alert('Resume file not found. Please add resume.pdf to the public folder, or contact me directly for my latest CV.');
+      };
+    }, 100);
   };
 
   const handleContactMe = () => {
@@ -87,12 +103,12 @@ const Hero = () => {
             {personalInfo.title}
           </motion.h2>
 
-          {/* Tagline */}
+          {/* Bio/Description */}
           <motion.p
             variants={itemVariants}
             className="hero-description"
           >
-            {personalInfo.tagline}
+            {personalInfo.bio}
           </motion.p>
 
           {/* CTA Buttons */}

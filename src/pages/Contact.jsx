@@ -32,8 +32,8 @@ const Contact = () => {
     {
       icon: Phone,
       label: 'Phone',
-      value: '+250 XXX XXX XXX',
-      href: 'tel:+250XXXXXXX',
+      value: '+250 788 955 906',
+      href: 'tel:+250788955906',
       color: 'text-purple-600'
     }
   ];
@@ -315,6 +315,18 @@ const Contact = () => {
                 >
                   Connect on LinkedIn
                 </motion.a>
+                <motion.button
+                  onClick={() => {
+                    const link = document.createElement('a');
+                    link.href = '/resume.pdf';
+                    link.download = 'resume.pdf';
+                    link.click();
+                  }}
+                  whileHover={{ scale: 1.05 }}
+                  className="px-8 py-4 bg-white/20 backdrop-blur-sm rounded-lg font-semibold hover:bg-white/30 transition-colors text-lg"
+                >
+                  Download Resume
+                </motion.button>
               </div>
             </div>
           </motion.div>

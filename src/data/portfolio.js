@@ -1,205 +1,275 @@
+// Personal Information
 export const personalInfo = {
-  name: "Divin Ishimwe",
-  title: "Network & Software Developer",
-  tagline: "Bridging Systems and Code | Networks | Java & React | Linux Wizard",
-  email: "divin.ishimwe@example.com",
+  name: "Ishimwe Divin",
+  title: "IT Student & Network Security Enthusiast", 
+  subtitle: "BSc in IT – Networks & Communication Systems",
   location: "Kigali, Rwanda",
-  bio: "I'm a passionate Network and Communication Systems student at AUCA with a deep love for software development. I bridge the gap between network infrastructure and modern applications, specializing in Spring Boot, React.js, and system administration. My journey spans from configuring enterprise firewalls to building full-stack applications, always with security and performance in mind.",
+  email: "ishimwedivin2@gmail.com",
+  phone: "+250 788 955 906",
+  linkedin: "https://www.linkedin.com/in/ishimwedivin2/",
+  github: "https://github.com/ishimwedivin2/",
+  portfolio: "https://ishimwedivin.vercel.app",
+  avatar: "/avatar.jpg", // Add your photo here
+  bio: "I'm an IT student passionate about solving real-world problems through tech. I enjoy building full-stack apps, deploying secure servers, and helping users with technical issues. I learn fast, adapt quickly, and love collaborating in tech environments.",
+  expectedGraduation: "2025",
+  university: "Adventist University of Central Africa (AUCA)",
   resume: "/resume.pdf",
   social: {
-    github: "https://github.com/divinishimwe",
-    linkedin: "https://linkedin.com/in/divinishimwe",
-    email: "mailto:divin.ishimwe@example.com"
+    github: "https://github.com/ishimwedivin2/",
+    linkedin: "https://www.linkedin.com/in/ishimwedivin2/",
+    email: "mailto:ishimwedivin2@gmail.com"
   }
 };
 
+// Education
+export const education = [
+  {
+    id: 1,
+    degree: "BSc in IT – Networks & Communication Systems",
+    institution: "Adventist University of Central Africa (AUCA)",
+    location: "Kigali, Rwanda",
+    period: "2022 - 2026",
+    expectedGraduation: "2026",
+    status: "Expected Graduation",
+    description: "Comprehensive program covering network infrastructure, cybersecurity, telecommunications, and system administration with hands-on laboratory experience.",
+    icon: "🎓"
+  }
+];
+
+// Certifications
+export const certifications = [
+  {
+    id: 1,
+    name: "Advanced Network Operations",
+    issuer: "ISOC x AUCA",
+    year: "2024",
+    description: "Advanced training in network operations, security protocols, and infrastructure management.",
+    icon: "🛡️"
+  },
+  {
+    id: 2,
+    name: "Cisco Network Essentials",
+    issuer: "Cisco Academy", 
+    year: "2024",
+    description: "Foundational networking concepts, routing, switching, and network troubleshooting.",
+    icon: "🌐"
+  },
+  {
+    id: 3,
+    name: "English Proficiency Certificate",
+    issuer: "AUCA",
+    year: "2024",
+    description: "Professional level English proficiency certification for technical communication.",
+    icon: "🗣️"
+  }
+];
+
+// Experience
+export const experience = [
+  {
+    id: 1,
+    title: "IT Intern",
+    company: "IDA Technology",
+    period: "Sep – Dec 2024",
+    location: "Kigali, Rwanda",
+    type: "Internship",
+    description: "Gained hands-on experience in Linux server management, software development, and technical troubleshooting in a professional IT environment.",
+    responsibilities: [
+      "Managed Linux servers, updates, and troubleshooting",
+      "Helped build internal tools with Spring Boot + React",
+      "Implemented secure server configurations and monitoring",
+      "Provided technical support and documentation"
+    ],
+    skills: ["Linux", "Spring Boot", "React", "Git", "Server Management"],
+    technologies: ["Linux", "Spring Boot", "React", "Git", "Server Management"],
+    icon: "💼"
+  }
+];
+
+// Skills with categories and proficiency levels
 export const skills = [
   {
     category: "Network & Security",
     items: [
-      { name: "pfSense Firewall", level: 85, icon: "🛡️" },
-      { name: "Snort IDS/IPS", level: 80, icon: "🔍" },
-      { name: "Network Analysis", level: 90, icon: "📊" },
-      { name: "Wireshark", level: 85, icon: "🔬" },
-      { name: "Cybersecurity", level: 80, icon: "🔒" },
-      { name: "Network Configuration", level: 85, icon: "🌐" },
-      { name: "VPN & Tunneling", level: 75, icon: "🔐" }
+      { name: "TCP/IP Networking", level: 90, icon: "🌐" },
+      { name: "pfSense Firewall", level: 85, icon: "�️" },
+      { name: "Snort IDS/IPS", level: 80, icon: "�" },
+      { name: "ModSecurity WAF", level: 85, icon: "⚡" },
+      { name: "Linux Security", level: 88, icon: "🔒" },
+      { name: "UFW Firewall", level: 85, icon: "🔥" },
+      { name: "Network Analysis", level: 82, icon: "�" }
     ]
   },
   {
-    category: "Backend Development",
+    category: "Backend Development", 
     items: [
+      { name: "Java", level: 88, icon: "☕" },
       { name: "Spring Boot", level: 85, icon: "🍃" },
-      { name: "Java", level: 80, icon: "☕" },
-      { name: "Node.js", level: 75, icon: "🟢" },
-      { name: "PostgreSQL", level: 75, icon: "🐘" },
-      { name: "MySQL", level: 70, icon: "🗄️" },
-      { name: "RESTful APIs", level: 85, icon: "🔗" },
-      { name: "Microservices", level: 70, icon: "🏗️" }
+      { name: "REST APIs", level: 90, icon: "�" },
+      { name: "PostgreSQL", level: 80, icon: "🐘" },
+      { name: "MySQL", level: 82, icon: "🗄️" },
+      { name: "PHP", level: 75, icon: "�" },
+      { name: "OOP Design", level: 88, icon: "🏗️" }
     ]
   },
   {
     category: "Frontend Development",
     items: [
-      { name: "React.js", level: 90, icon: "⚛️" },
-      { name: "JavaScript/ES6+", level: 85, icon: "🟨" },
-      { name: "HTML5 & CSS3", level: 95, icon: "🌐" },
-      { name: "Tailwind CSS", level: 80, icon: "🎨" },
-      { name: "TypeScript", level: 75, icon: "🔷" },
-      { name: "Responsive Design", level: 90, icon: "📱" },
-      { name: "Vite/Webpack", level: 70, icon: "⚡" }
+      { name: "React.js", level: 85, icon: "⚛️" },
+      { name: "JavaScript", level: 82, icon: "�" },
+      { name: "HTML/CSS", level: 88, icon: "�" },
+      { name: "Responsive Design", level: 85, icon: "📱" },
+      { name: "UI/UX Design", level: 75, icon: "🎨" },
+      { name: "Multilingual Apps", level: 80, icon: "🌍" },
+      { name: "Modern CSS", level: 82, icon: "💫" }
     ]
   },
   {
     category: "Infrastructure & DevOps",
     items: [
-      { name: "Linux Administration", level: 90, icon: "🐧" },
-      { name: "Docker", level: 80, icon: "🐳" },
-      { name: "Git & GitHub", level: 95, icon: "📚" },
-      { name: "Nginx", level: 75, icon: "⚡" },
-      { name: "Traefik", level: 70, icon: "🔀" },
-      { name: "AWS/Cloud", level: 65, icon: "☁️" },
-      { name: "CI/CD", level: 60, icon: "🔄" }
+      { name: "Docker", level: 85, icon: "�" },
+      { name: "Linux Administration", level: 90, icon: "�" },
+      { name: "Nginx/Apache", level: 82, icon: "🌐" },
+      { name: "Traefik", level: 78, icon: "🔀" },
+      { name: "Git/Version Control", level: 88, icon: "�" },
+      { name: "Bash Scripting", level: 80, icon: "💻" },
+      { name: "Cloud Basics", level: 75, icon: "☁️" }
     ]
   }
 ];
 
+// Projects
 export const projects = [
   {
     id: 1,
-    title: "Spring Boot Portfolio CRUD",
-    description: "Full-stack portfolio management system with user authentication, project CRUD operations, and responsive design. Built with Spring Boot backend and React frontend.",
-    image: "/projects/portfolio-crud.jpg",
-    tags: ["Spring Boot", "React", "PostgreSQL", "JWT", "Bootstrap"],
-    github: "https://github.com/divinishimwe/portfolio-crud",
-    demo: null,
-    featured: true,
-    category: "Full Stack"
+    title: "Grocery Management System",
+    description: "Full-stack application with advanced authentication, role-based access control, and multilingual support.",
+    longDescription: "A comprehensive grocery management system built with Spring Boot backend and React frontend. Features secure authentication, role-based access control, multilingual UI support, and complete CRUD operations for inventory management.",
+    image: "/projects/grocery-system.jpg",
+    technologies: ["Spring Boot", "React", "PostgreSQL", "JWT Auth", "REST APIs", "Multilingual Support"],
+    tags: ["Spring Boot", "React", "PostgreSQL", "JWT", "Multilingual"],
+    features: [
+      "Secure authentication & authorization",
+      "Role-based access control",
+      "Multilingual UI (English/Kinyarwanda)",
+      "Real-time inventory tracking",
+      "Advanced search & filtering",
+      "Responsive design"
+    ],
+    liveDemo: "#", // Add your live demo link
+    demo: "#",
+    github: "#", // Add your GitHub repo link
+    status: "Completed",
+    type: "Full-Stack Application",
+    category: "Full Stack",
+    featured: true
   },
   {
     id: 2,
-    title: "Enterprise Firewall with pfSense",
-    description: "Configured and deployed pfSense firewall for small business network. Implemented VLANs, traffic shaping, VPN access, and comprehensive security policies.",
-    image: "/projects/pfsense-firewall.jpg",
-    tags: ["pfSense", "Network Security", "VPN", "VLAN", "Traffic Shaping"],
-    github: null,
-    demo: null,
-    featured: true,
-    category: "Network Security"
+    title: "Dockerized PHP Portfolio with Traefik",
+    description: "Containerized portfolio deployment with advanced networking, SSL termination, and security configurations.",
+    longDescription: "A containerized portfolio solution using Docker, Traefik reverse proxy, and comprehensive security measures including SSL certificates, firewall configuration, and HTTPS enforcement.",
+    image: "/projects/docker-portfolio.jpg",
+    technologies: ["PHP", "MySQL", "Docker", "Traefik", "Nginx", "UFW", "SSL/TLS"],
+    tags: ["Docker", "PHP", "MySQL", "Traefik", "SSL"],
+    features: [
+      "Docker containerization",
+      "Traefik reverse proxy",
+      "Automatic SSL certificates",
+      "UFW firewall configuration", 
+      "HTTPS enforcement",
+      "Production-ready deployment"
+    ],
+    liveDemo: "https://ishimwedivin.vercel.app",
+    demo: "https://ishimwedivin.vercel.app",
+    github: "#", // Add your GitHub repo link
+    status: "Deployed",
+    type: "DevOps & Deployment",
+    category: "DevOps",
+    featured: true
   },
   {
     id: 3,
-    title: "Intrusion Detection System",
-    description: "Deployed Snort IDS/IPS to monitor network traffic and detect potential security threats. Created custom rules and integrated with log analysis tools.",
-    image: "/projects/snort-ids.jpg",
-    tags: ["Snort", "IDS/IPS", "Network Monitoring", "Security Analysis", "Linux"],
-    github: "https://github.com/divinishimwe/snort-config",
-    demo: null,
-    featured: true,
-    category: "Cybersecurity"
-  },
-  {
-    id: 4,
-    title: "Dockerized PHP Portfolio",
-    description: "Multi-container PHP application with MySQL database, Nginx web server, and Traefik reverse proxy. Fully containerized development and production environment.",
-    image: "/projects/docker-portfolio.jpg",
-    tags: ["Docker", "PHP", "MySQL", "Nginx", "Traefik", "Docker Compose"],
-    github: "https://github.com/divinishimwe/docker-php-portfolio",
-    demo: "https://portfolio.divinishimwe.dev",
-    featured: false,
-    category: "DevOps"
-  },
-  {
-    id: 5,
-    title: "React Task Management App",
-    description: "Modern task management application built with React, featuring drag-and-drop functionality, real-time updates, and responsive design.",
-    image: "/projects/react-tasks.jpg",
-    tags: ["React", "JavaScript", "CSS3", "LocalStorage", "Responsive"],
-    github: "https://github.com/divinishimwe/react-task-manager",
-    demo: "https://tasks.divinishimwe.dev",
-    featured: false,
-    category: "Frontend"
-  },
-  {
-    id: 6,
-    title: "Network Security Lab",
-    description: "Virtual network lab setup for testing security configurations, penetration testing, and network analysis. Includes multiple VLANs and security tools.",
+    title: "Cybersecurity Labs",
+    description: "Comprehensive security testing environment with WAF, IDS/IPS, and firewall implementations.",
+    longDescription: "Advanced cybersecurity laboratory setup featuring Web Application Firewall (ModSecurity), Intrusion Detection/Prevention Systems (Snort), pfSense firewall configuration, and HTTPS implementation on Ubuntu/Kali Linux.",
     image: "/projects/security-lab.jpg",
-    tags: ["VirtualBox", "pfSense", "Kali Linux", "Network Security", "Penetration Testing"],
-    github: "https://github.com/divinishimwe/network-security-lab",
+    technologies: ["ModSecurity", "Snort", "pfSense", "Ubuntu", "Kali Linux", "Docker", "Network Security"],
+    tags: ["ModSecurity", "Snort", "pfSense", "Security", "Linux"],
+    features: [
+      "ModSecurity WAF implementation",
+      "Snort IDS/IPS configuration",
+      "pfSense firewall setup",
+      "Attack simulation & testing",
+      "Server hardening techniques",
+      "Docker-based lab deployment"
+    ],
+    liveDemo: null,
     demo: null,
-    featured: false,
-    category: "Network"
+    github: "#", // Add if public
+    status: "Ongoing",
+    type: "Security Research",
+    category: "Cybersecurity",
+    featured: true
   }
 ];
 
-export const education = [
-  {
-    id: 1,
-    degree: "Bachelor of Science in Network and Communication Systems",
-    institution: "Adventist University of Central Africa (AUCA)",
-    location: "Kigali, Rwanda",
-    period: "2021 - 2025",
-    description: "Comprehensive program covering network infrastructure, cybersecurity, telecommunications, and system administration with hands-on laboratory experience."
-  }
+// Career Goals & Languages
+export const careerGoals = {
+  lookingFor: ["Remote internships", "Freelance work", "Open-source contribution"],
+  focusAreas: ["Network Security", "Full-stack Development", "DevOps"],
+  interests: [
+    "Cybersecurity research and implementation",
+    "Cloud infrastructure and automation", 
+    "Full-stack web development",
+    "Linux system administration",
+    "Network architecture and security"
+  ]
+};
+
+// Languages
+export const languages = [
+  { name: "English", level: "Proficient", icon: "🇺🇸" },
+  { name: "Kinyarwanda", level: "Native", icon: "🇷🇼" },
+  { name: "German", level: "Basic", icon: "🇩🇪" }
 ];
 
-export const experience = [
-  {
-    id: 1,
-    title: "Network Systems Intern",
-    company: "Tech Solutions Rwanda",
-    location: "Kigali, Rwanda",
-    period: "Jun 2023 - Aug 2023",
-    description: "Assisted in network infrastructure maintenance, configured enterprise firewalls, and supported system administration tasks for small to medium businesses.",
-    skills: ["pfSense", "Network Configuration", "System Administration", "Technical Support"]
-  },
-  {
-    id: 2,
-    title: "Full-Stack Developer (Freelance)",
-    company: "Independent Projects",
-    location: "Remote",
-    period: "2022 - Present",
-    description: "Developed web applications using Spring Boot and React.js, implemented secure authentication systems, and deployed applications using Docker and modern DevOps practices.",
-    skills: ["Spring Boot", "React.js", "PostgreSQL", "Docker", "AWS"]
-  }
-];
-
+// Articles (Blog posts)
 export const articles = [
   {
     id: 1,
-    title: "Building Secure Network Infrastructure with pfSense",
-    excerpt: "A comprehensive guide to setting up enterprise-grade network security using pfSense firewall, including VPN configuration and traffic monitoring.",
-    date: "2024-03-15",
+    title: "Building Secure Infrastructure with Docker and Traefik",
+    excerpt: "A comprehensive guide to deploying secure containerized applications with automatic SSL certificates and reverse proxy configuration.",
+    date: "2024-12-15",
     readTime: "8 min read",
-    category: "Network Security",
-    tags: ["pfSense", "Network Security", "VPN", "Firewall"],
-    link: "https://blog.divinishimwe.dev/pfsense-security-guide",
+    category: "DevOps",
+    tags: ["Docker", "Traefik", "SSL", "Security"],
+    link: "#",
     featured: true,
-    published: false
+    published: true
   },
   {
     id: 2,
-    title: "Full-Stack Development with Spring Boot and React",
-    excerpt: "Learn how to build modern web applications by combining the power of Spring Boot backend with React frontend, including authentication and deployment.",
-    date: "2024-02-28",
+    title: "Implementing Network Security with pfSense and Snort",
+    excerpt: "Learn how to build a comprehensive network security solution using pfSense firewall and Snort IDS/IPS for threat detection.",
+    date: "2024-11-28",
     readTime: "12 min read",
-    category: "Web Development",
-    tags: ["Spring Boot", "React", "Full Stack", "Authentication"],
-    link: "https://blog.divinishimwe.dev/spring-boot-react-guide",
+    category: "Network Security",
+    tags: ["pfSense", "Snort", "Network Security", "IDS/IPS"],
+    link: "#",
     featured: true,
-    published: false
+    published: true
   },
   {
     id: 3,
-    title: "Docker Containerization for Java Applications",
-    excerpt: "Master containerization of Java applications with Docker, including best practices for Spring Boot applications and multi-stage builds.",
-    date: "2024-01-20",
+    title: "Full-Stack Development with Spring Boot and React",
+    excerpt: "Building modern web applications with secure authentication, role-based access control, and multilingual support.",
+    date: "2024-10-20",
     readTime: "10 min read",
-    category: "DevOps",
-    tags: ["Docker", "Java", "Spring Boot", "Containerization"],
-    link: "https://blog.divinishimwe.dev/docker-java-guide",
+    category: "Web Development",
+    tags: ["Spring Boot", "React", "Authentication", "Full Stack"],
+    link: "#",
     featured: false,
-    published: false
+    published: true
   }
 ];

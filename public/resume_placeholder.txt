@@ -1,0 +1,18 @@
+Resume Placeholder File
+
+This file should be replaced with your actual resume PDF.
+
+To add your resume:
+1. Save your resume as "resume.pdf" 
+2. Place it in the public folder of your project
+3. The download buttons will automatically work
+
+Your resume should include:
+- Contact Information
+- Education (BSc in IT - Networks & Communication Systems)
+- Experience (IT Intern at IDA Technology)
+- Skills (Network Security, Full-stack Development, etc.)
+- Certifications (ISOC, Cisco, English Proficiency)
+- Projects (Grocery Management, Docker Portfolio, Cybersecurity Labs)
+
+Contact: ishimwedivin2@gmail.com

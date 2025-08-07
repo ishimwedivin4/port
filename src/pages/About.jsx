@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { MapPin, GraduationCap, Briefcase, Code, Shield, Server } from 'lucide-react';
-import { personalInfo, education, experience } from '../data/portfolio';
+import { MapPin, GraduationCap, Briefcase, Code, Shield, Server, Award } from 'lucide-react';
+import { personalInfo, education, experience, certifications } from '../data/portfolio';
 
 const About = () => {
   const ref = useRef(null);
@@ -174,6 +174,41 @@ const About = () => {
               </div>
             </motion.div>
           </div>
+
+          {/* Certifications Section */}
+          <motion.div variants={itemVariants} className="mt-16 fade-in-on-scroll">
+            <div className="flex items-center space-x-2 mb-8">
+              <Award size={24} className="text-primary-600" />
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Certifications</h3>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {certifications.map((cert) => (
+                <motion.div
+                  key={cert.id}
+                  whileHover={{ scale: 1.02, y: -4 }}
+                  className="bg-white dark:bg-dark-800 rounded-xl p-6 border border-gray-200 dark:border-dark-700 shadow-sm hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="flex items-center mb-4">
+                    <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mr-3">
+                      <span className="text-lg">{cert.icon}</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 dark:text-white text-sm">
+                        {cert.name}
+                      </h4>
+                      <p className="text-xs text-gray-600 dark:text-gray-400">
+                        {cert.issuer} • {cert.year}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-700 dark:text-gray-300">
+                    {cert.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

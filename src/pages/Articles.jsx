@@ -201,18 +201,30 @@ const Articles = () => {
             <div className="bg-gray-50 dark:bg-dark-800 rounded-xl p-6">
               <h4 className="text-lg font-semibold mb-2">Want to read more?</h4>
               <p className="text-gray-600 dark:text-gray-400 mb-4">
-                Follow my blog for the latest articles and insights
+                Connect with me on LinkedIn or GitHub for the latest updates and insights
               </p>
-              <motion.a
-                href="https://blog.divinishimwe.dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                className="btn-secondary inline-flex items-center space-x-2"
-              >
-                <BookOpen size={20} />
-                <span>Visit Blog</span>
-              </motion.a>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <motion.a
+                  href="https://www.linkedin.com/in/ishimwedivin2/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  className="btn-secondary inline-flex items-center space-x-2"
+                >
+                  <BookOpen size={20} />
+                  <span>LinkedIn Articles</span>
+                </motion.a>
+                <motion.a
+                  href="https://github.com/ishimwedivin2/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  className="btn-secondary inline-flex items-center space-x-2"
+                >
+                  <BookOpen size={20} />
+                  <span>GitHub Projects</span>
+                </motion.a>
+              </div>
             </div>
           </motion.div>
         </motion.div>
