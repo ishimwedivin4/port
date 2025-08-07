@@ -81,11 +81,11 @@ const Skills = () => {
         animate={isInView ? "visible" : "hidden"}
         className="skills-grid"
       >
-        {skills.map((category, categoryIndex) => (
+        {skills && skills.length > 0 ? skills.map((category, categoryIndex) => (
           <motion.div
             key={category.category}
             variants={itemVariants}
-            className="skill-item"
+            className="skill-item fade-in-on-scroll"
             data-skill={category.category}
           >
             <div className="skill-category">
@@ -94,8 +94,13 @@ const Skills = () => {
               </h3>
               
               <div className="space-y-4">
-                {category.items.map((skill, skillIndex) => (
-                  <div key={skill.name} className="fade-in-on-scroll">
+                {category.items && category.items.map((skill, skillIndex) => (
+                  <motion.div 
+                    key={skill.name} 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    transition={{ duration: 0.6, delay: skillIndex * 0.1 }}
+                  >
                     <div className="skill-label">
                       <div className="flex items-center space-x-2">
                         <span className="text-lg">{skill.icon}</span>
@@ -112,12 +117,16 @@ const Skills = () => {
                         transition={{ duration: 1.5, ease: "easeOut", delay: skillIndex * 0.1 }}
                       />
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
           </motion.div>
-        ))}
+        )) : (
+          <div className="col-span-full text-center py-8">
+            <p className="text-gray-600 dark:text-gray-400">No skills data available</p>
+          </div>
+        )}
       </motion.div>
 
       {/* Additional Tools Section */}
@@ -128,13 +137,25 @@ const Skills = () => {
         className="mt-12"
       >
         <h3 className="text-2xl font-semibold text-center mb-6">
-          Tools & Technologies
+          Professional Tools & Technologies
         </h3>
         
         <div className="flex flex-wrap justify-center gap-3">
           {[
-            'VS Code', 'IntelliJ IDEA', 'Postman', 'Wireshark', 'VMware',
-            'VirtualBox', 'Cisco Packet Tracer', 'AWS', 'Figma', 'Canva'
+            // Development Tools
+            'VS Code', 'IntelliJ IDEA', 'Eclipse', 'Git', 'Postman',
+            
+            // Network Tools  
+            'Wireshark', 'Nmap', 'Cisco Packet Tracer', 'GNS3',
+            
+            // Security Tools
+            'pfSense', 'Snort', 'Nessus', 'Burp Suite',
+            
+            // Infrastructure
+            'Docker', 'VMware', 'VirtualBox', 'AWS', 'Kubernetes',
+            
+            // Design & Documentation
+            'Figma', 'Canva', 'Swagger', 'Draw.io'
           ].map((tool) => (
             <motion.span
               key={tool}

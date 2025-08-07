@@ -15,13 +15,15 @@ export const personalInfo = {
 
 export const skills = [
   {
-    category: "Frontend Development",
+    category: "Network & Security",
     items: [
-      { name: "React.js", level: 90, icon: "⚛️" },
-      { name: "JavaScript/ES6+", level: 85, icon: "🟨" },
-      { name: "HTML5 & CSS3", level: 95, icon: "🌐" },
-      { name: "Tailwind CSS", level: 80, icon: "🎨" },
-      { name: "Responsive Design", level: 90, icon: "📱" }
+      { name: "pfSense Firewall", level: 85, icon: "🛡️" },
+      { name: "Snort IDS/IPS", level: 80, icon: "🔍" },
+      { name: "Network Analysis", level: 90, icon: "📊" },
+      { name: "Wireshark", level: 85, icon: "🔬" },
+      { name: "Cybersecurity", level: 80, icon: "🔒" },
+      { name: "Network Configuration", level: 85, icon: "🌐" },
+      { name: "VPN & Tunneling", level: 75, icon: "🔐" }
     ]
   },
   {
@@ -29,29 +31,35 @@ export const skills = [
     items: [
       { name: "Spring Boot", level: 85, icon: "🍃" },
       { name: "Java", level: 80, icon: "☕" },
+      { name: "Node.js", level: 75, icon: "🟢" },
       { name: "PostgreSQL", level: 75, icon: "🐘" },
       { name: "MySQL", level: 70, icon: "🗄️" },
-      { name: "RESTful APIs", level: 85, icon: "🔗" }
+      { name: "RESTful APIs", level: 85, icon: "🔗" },
+      { name: "Microservices", level: 70, icon: "🏗️" }
+    ]
+  },
+  {
+    category: "Frontend Development",
+    items: [
+      { name: "React.js", level: 90, icon: "⚛️" },
+      { name: "JavaScript/ES6+", level: 85, icon: "🟨" },
+      { name: "HTML5 & CSS3", level: 95, icon: "🌐" },
+      { name: "Tailwind CSS", level: 80, icon: "🎨" },
+      { name: "TypeScript", level: 75, icon: "🔷" },
+      { name: "Responsive Design", level: 90, icon: "📱" },
+      { name: "Vite/Webpack", level: 70, icon: "⚡" }
     ]
   },
   {
     category: "Infrastructure & DevOps",
     items: [
-      { name: "Docker", level: 75, icon: "🐳" },
-      { name: "Linux Administration", level: 85, icon: "🐧" },
-      { name: "Nginx", level: 70, icon: "⚡" },
-      { name: "Traefik", level: 65, icon: "🔀" },
-      { name: "Git & GitHub", level: 90, icon: "📚" }
-    ]
-  },
-  {
-    category: "Network & Security",
-    items: [
-      { name: "pfSense Firewall", level: 80, icon: "🛡️" },
-      { name: "Snort IDS/IPS", level: 75, icon: "🔍" },
-      { name: "Network Analysis", level: 85, icon: "📊" },
-      { name: "Cybersecurity", level: 70, icon: "🔒" },
-      { name: "Network Configuration", level: 80, icon: "🌐" }
+      { name: "Linux Administration", level: 90, icon: "🐧" },
+      { name: "Docker", level: 80, icon: "🐳" },
+      { name: "Git & GitHub", level: 95, icon: "📚" },
+      { name: "Nginx", level: 75, icon: "⚡" },
+      { name: "Traefik", level: 70, icon: "🔀" },
+      { name: "AWS/Cloud", level: 65, icon: "☁️" },
+      { name: "CI/CD", level: 60, icon: "🔄" }
     ]
   }
 ];
@@ -104,9 +112,9 @@ export const projects = [
   {
     id: 5,
     title: "React Task Management App",
-    description: "Modern task management application with drag-and-drop functionality, real-time updates, and responsive design built with React and local storage.",
-    image: "/projects/task-manager.jpg",
-    tags: ["React", "JavaScript", "Local Storage", "CSS3", "Responsive"],
+    description: "Modern task management application built with React, featuring drag-and-drop functionality, real-time updates, and responsive design.",
+    image: "/projects/react-tasks.jpg",
+    tags: ["React", "JavaScript", "CSS3", "LocalStorage", "Responsive"],
     github: "https://github.com/divinishimwe/react-task-manager",
     demo: "https://tasks.divinishimwe.dev",
     featured: false,
@@ -114,57 +122,25 @@ export const projects = [
   },
   {
     id: 6,
-    title: "Network Monitoring Dashboard",
-    description: "Real-time network monitoring dashboard displaying bandwidth usage, device status, and traffic analysis. Built with React and network monitoring APIs.",
-    image: "/projects/network-dashboard.jpg",
-    tags: ["React", "Network APIs", "Charts.js", "Real-time", "Monitoring"],
-    github: "https://github.com/divinishimwe/network-monitor",
+    title: "Network Security Lab",
+    description: "Virtual network lab setup for testing security configurations, penetration testing, and network analysis. Includes multiple VLANs and security tools.",
+    image: "/projects/security-lab.jpg",
+    tags: ["VirtualBox", "pfSense", "Kali Linux", "Network Security", "Penetration Testing"],
+    github: "https://github.com/divinishimwe/network-security-lab",
     demo: null,
     featured: false,
     category: "Network"
   }
 ];
 
-export const articles = [
+export const education = [
   {
     id: 1,
-    title: "Setting up pfSense for Small Business Networks",
-    excerpt: "A comprehensive guide to configuring pfSense firewall for small business environments, including VLAN setup, traffic shaping, and VPN configuration.",
-    date: "2024-12-15",
-    readTime: "8 min read",
-    tags: ["pfSense", "Network Security", "Small Business"],
-    published: true,
-    slug: "pfsense-small-business-setup"
-  },
-  {
-    id: 2,
-    title: "Dockerizing Spring Boot Applications",
-    excerpt: "Learn how to containerize Spring Boot applications with Docker, including multi-stage builds, environment configuration, and production best practices.",
-    date: "2024-11-28",
-    readTime: "12 min read",
-    tags: ["Docker", "Spring Boot", "DevOps"],
-    published: true,
-    slug: "dockerizing-spring-boot-apps"
-  },
-  {
-    id: 3,
-    title: "Building Intrusion Detection Systems with Snort",
-    excerpt: "Step-by-step guide to deploying and configuring Snort IDS for network security monitoring, including custom rule creation and log analysis.",
-    date: "2024-11-10",
-    readTime: "15 min read",
-    tags: ["Snort", "IDS", "Network Security", "Linux"],
-    published: true,
-    slug: "snort-ids-setup-guide"
-  },
-  {
-    id: 4,
-    title: "React Best Practices for Modern Web Development",
-    excerpt: "Essential React patterns and practices for building scalable, maintainable web applications, including hooks, performance optimization, and state management.",
-    date: "2024-10-22",
-    readTime: "10 min read",
-    tags: ["React", "JavaScript", "Best Practices"],
-    published: false,
-    slug: "react-best-practices-2024"
+    degree: "Bachelor of Science in Network and Communication Systems",
+    institution: "Adventist University of Central Africa (AUCA)",
+    location: "Kigali, Rwanda",
+    period: "2021 - 2025",
+    description: "Comprehensive program covering network infrastructure, cybersecurity, telecommunications, and system administration with hands-on laboratory experience."
   }
 ];
 
@@ -172,30 +148,58 @@ export const experience = [
   {
     id: 1,
     title: "Network Systems Intern",
-    company: "TechCorp Rwanda",
+    company: "Tech Solutions Rwanda",
     location: "Kigali, Rwanda",
-    period: "June 2024 - August 2024",
-    description: "Assisted in network infrastructure management, configured routers and switches, and supported cybersecurity initiatives.",
-    skills: ["Network Configuration", "Cisco Equipment", "Network Troubleshooting"]
+    period: "Jun 2023 - Aug 2023",
+    description: "Assisted in network infrastructure maintenance, configured enterprise firewalls, and supported system administration tasks for small to medium businesses.",
+    skills: ["pfSense", "Network Configuration", "System Administration", "Technical Support"]
   },
   {
     id: 2,
-    title: "Web Development Freelancer",
-    company: "Self-Employed",
+    title: "Full-Stack Developer (Freelance)",
+    company: "Independent Projects",
     location: "Remote",
-    period: "January 2024 - Present",
-    description: "Developed custom web applications for local businesses using React, Spring Boot, and modern web technologies.",
-    skills: ["React", "Spring Boot", "PostgreSQL", "Client Communication"]
+    period: "2022 - Present",
+    description: "Developed web applications using Spring Boot and React.js, implemented secure authentication systems, and deployed applications using Docker and modern DevOps practices.",
+    skills: ["Spring Boot", "React.js", "PostgreSQL", "Docker", "AWS"]
   }
 ];
 
-export const education = [
+export const articles = [
   {
     id: 1,
-    degree: "Bachelor's in Network and Communication Systems",
-    institution: "Adventist University of Central Africa (AUCA)",
-    location: "Kigali, Rwanda",
-    period: "2022 - 2026 (Expected)",
-    description: "Focusing on network infrastructure, cybersecurity, and system administration with additional coursework in software development."
+    title: "Building Secure Network Infrastructure with pfSense",
+    excerpt: "A comprehensive guide to setting up enterprise-grade network security using pfSense firewall, including VPN configuration and traffic monitoring.",
+    date: "2024-03-15",
+    readTime: "8 min read",
+    category: "Network Security",
+    tags: ["pfSense", "Network Security", "VPN", "Firewall"],
+    link: "https://blog.divinishimwe.dev/pfsense-security-guide",
+    featured: true,
+    published: false
+  },
+  {
+    id: 2,
+    title: "Full-Stack Development with Spring Boot and React",
+    excerpt: "Learn how to build modern web applications by combining the power of Spring Boot backend with React frontend, including authentication and deployment.",
+    date: "2024-02-28",
+    readTime: "12 min read",
+    category: "Web Development",
+    tags: ["Spring Boot", "React", "Full Stack", "Authentication"],
+    link: "https://blog.divinishimwe.dev/spring-boot-react-guide",
+    featured: true,
+    published: false
+  },
+  {
+    id: 3,
+    title: "Docker Containerization for Java Applications",
+    excerpt: "Master containerization of Java applications with Docker, including best practices for Spring Boot applications and multi-stage builds.",
+    date: "2024-01-20",
+    readTime: "10 min read",
+    category: "DevOps",
+    tags: ["Docker", "Java", "Spring Boot", "Containerization"],
+    link: "https://blog.divinishimwe.dev/docker-java-guide",
+    featured: false,
+    published: false
   }
 ];
