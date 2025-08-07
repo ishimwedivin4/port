@@ -79,11 +79,35 @@ const Hero = () => {
             variants={itemVariants}
             className="mb-8"
           >
-            <div className="hero-avatar">
-              <div className="hero-avatar-inner">
-                D
+            <motion.div 
+              className="hero-avatar"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <div className="hero-avatar-inner overflow-hidden">
+                <img 
+                  src="/images/img.jpg?v=1" 
+                  alt={personalInfo.name} 
+                  className="w-full h-full object-cover object-center rounded-full transition-transform duration-300 hover:scale-110"
+                  loading="eager"
+                  onLoad={(e) => {
+                    console.log('Image loaded successfully');
+                    e.target.nextSibling.style.display = 'none';
+                  }}
+                  onError={(e) => {
+                    console.log('Image failed to load, showing fallback');
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'flex';
+                  }}
+                />
+                <div className="w-full h-full flex items-center justify-center text-4xl font-bold text-primary-600" style={{display: 'flex'}}>
+                  D
+                </div>
               </div>
-            </div>
+              {/* Floating animation dots */}
+              <div className="absolute -top-2 -right-2 w-4 h-4 bg-green-500 rounded-full animate-pulse shadow-lg"></div>
+              <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-blue-500 rounded-full animate-bounce shadow-md"></div>
+            </motion.div>
           </motion.div>
 
           {/* Main Heading */}

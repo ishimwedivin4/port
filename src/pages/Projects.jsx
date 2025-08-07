@@ -41,13 +41,22 @@ const Projects = () => {
       className="project-card fade-in-on-scroll"
     >
       {/* Project Image */}
-      <div className="h-48 bg-gradient-to-r from-primary-600 to-blue-600 relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-          <div className="text-white text-center">
-            <div className="text-4xl mb-2">🚀</div>
-            <p className="text-sm">Preview Image</p>
+      <div className="h-48 relative overflow-hidden bg-gray-200 dark:bg-gray-800">
+        {project.image ? (
+          <img 
+            src={project.image} 
+            alt={project.title}
+            className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
+            loading="lazy"
+          />
+        ) : (
+          <div className="h-full bg-gradient-to-r from-primary-600 to-blue-600 flex items-center justify-center">
+            <div className="text-white text-center">
+              <div className="text-4xl mb-2">🚀</div>
+              <p className="text-sm">Preview Image</p>
+            </div>
           </div>
-        </div>
+        )}
         
         {/* Overlay on Hover */}
         <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">

@@ -698,25 +698,39 @@ a:hover {
 }
 
 .hero-avatar {
-  width: 8rem;
-  height: 8rem;
+  width: 10rem;
+  height: 10rem;
   margin: 0 auto var(--space-8);
   background: linear-gradient(135deg, var(--primary-600), var(--accent-purple));
   border-radius: 50%;
   padding: 4px;
-  box-shadow: var(--shadow-2xl);
+  box-shadow: var(--shadow-2xl), 0 0 0 4px rgba(79, 70, 229, 0.1);
   position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-avatar:hover {
+  box-shadow: var(--shadow-2xl), 0 0 0 6px rgba(79, 70, 229, 0.2), 0 0 30px rgba(79, 70, 229, 0.3);
+  transform: translateY(-2px);
 }
 
 .hero-avatar::before {
   content: '';
   position: absolute;
-  inset: -4px;
+  inset: -6px;
   background: linear-gradient(135deg, var(--primary-400), var(--accent-purple), var(--accent-emerald));
   border-radius: 50%;
   z-index: -1;
-  filter: blur(20px);
-  opacity: 0.7;
+  filter: blur(25px);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.hero-avatar:hover::before {
+  opacity: 0.8;
+  filter: blur(30px);
+  inset: -8px;
 }
 
 .hero-avatar-inner {
@@ -730,6 +744,8 @@ a:hover {
   font-size: var(--text-4xl);
   font-weight: 700;
   color: var(--primary-600);
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-title {
