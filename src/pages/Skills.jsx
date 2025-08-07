@@ -13,18 +13,18 @@ const Skills = () => {
       opacity: 1,
       transition: {
         duration: 0.8,
-        staggerChildren: 0.1
+        staggerChildren: 2.0
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, x: -100 },
     visible: {
       opacity: 1,
-      y: 0,
+      x: 0,
       transition: {
-        duration: 0.6,
+        duration: 1.0,
         ease: "easeOut"
       }
     }
@@ -97,9 +97,9 @@ const Skills = () => {
                 {category.items && category.items.map((skill, skillIndex) => (
                   <motion.div 
                     key={skill.name} 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.6, delay: skillIndex * 0.1 }}
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+                    transition={{ duration: 0.8, delay: skillIndex * 0.2 }}
                   >
                     <div className="skill-label">
                       <div className="flex items-center space-x-2">
