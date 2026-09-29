@@ -35,8 +35,9 @@ const ScrollToTop = () => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 w-12 h-12 bg-primary-600 hover:bg-primary-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-40"
-          aria-label="Scroll to top"
+          className="back-to-top"
+          aria-label="Back to top"
+          title="Back to top"
         >
           <ChevronUp size={24} />
         </motion.button>

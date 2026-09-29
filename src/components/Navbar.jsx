@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import DarkModeToggle from './DarkModeToggle';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,7 +9,6 @@ const Navbar = () => {
   const location = useLocation();
 
   const navItems = [
-    { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Skills', path: '/skills' },
     { name: 'Projects', path: '/projects' },
@@ -27,6 +25,21 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (!isOpen) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') setIsOpen(false);
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
   const isActive = (path) => location.pathname === path;
 
   return (
@@ -37,20 +50,20 @@ const Navbar = () => {
       className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="navbar-inner">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to="/" className="navbar-brand flex items-center space-x-2">
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="logo-icon"
             >
-              <span className="text-white font-bold text-lg">D</span>
+              <span className="logo-monogram">ID</span>
             </motion.div>
             <span className="logo">Divin</span>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="navbar-desktop-links">
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -66,18 +79,19 @@ const Navbar = () => {
                 )}
               </Link>
             ))}
-            
-            {/* Dark Mode Toggle */}
-            <DarkModeToggle />
           </div>
 
+          <Link to="/contact" className="navbar-hire-link">Hire Me</Link>
+
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-4">
-            <DarkModeToggle />
-            
+          <div className="navbar-mobile-controls">
             <button
-              onClick={() => setIsOpen(!isOpen)}
+              type="button"
+              onClick={() => setIsOpen((open) => !open)}
               className="btn-icon"
+              aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={isOpen}
+              aria-controls="mobile-navigation"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -86,10 +100,15 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         <motion.div
+          id="mobile-navigation"
           initial={false}
-          animate={{ height: isOpen ? 'auto' : 0 }}
-          transition={{ duration: 0.3 }}
-          className="md:hidden overflow-hidden"
+          animate={isOpen
+            ? { opacity: 1, y: 0, visibility: 'visible' }
+            : { opacity: 0, y: -8, visibility: 'hidden' }}
+          transition={{ duration: 0.18, ease: 'easeOut' }}
+          className="mobile-menu-panel md:hidden"
+          aria-hidden={!isOpen}
+          inert={!isOpen}
         >
           <div className="mobile-menu">
             {navItems.map((item) => (
@@ -102,6 +121,9 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
+            <Link to="/contact" onClick={() => setIsOpen(false)} className="navbar-mobile-cta">
+              Hire Me
+            </Link>
           </div>
         </motion.div>
       </div>

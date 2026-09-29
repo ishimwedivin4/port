@@ -1,15 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Github, ExternalLink, Filter } from 'lucide-react';
+import { Github, ExternalLink, Monitor } from 'lucide-react';
 import { projects } from '../data/portfolio';
 
 const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, threshold: 0.1 });
-  const [filter, setFilter] = useState('All');
-
-  const categories = ['All', 'Full Stack', 'Network Security', 'Cybersecurity', 'DevOps', 'Frontend', 'Network'];
-  const filteredProjects = filter === 'All' ? projects : projects.filter(project => project.category === filter);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -34,167 +30,103 @@ const Projects = () => {
     }
   };
 
-  const ProjectCard = ({ project }) => (
-    <motion.div
-      variants={itemVariants}
-      whileHover={{ y: -5 }}
-      className="project-card fade-in-on-scroll"
-    >
-      {/* Project Image */}
-      <div className="h-48 relative overflow-hidden bg-gray-200 dark:bg-gray-800">
-        {project.image ? (
-          <img 
-            src={project.image} 
-            alt={project.title}
-            className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
-            loading="lazy"
-          />
-        ) : (
-          <div className="h-full bg-gradient-to-r from-primary-600 to-blue-600 flex items-center justify-center">
-            <div className="text-white text-center">
-              <div className="text-4xl mb-2">🚀</div>
-              <p className="text-sm">Preview Image</p>
+  const ProjectCard = ({ project }) => {
+    const demoUrl = project.liveDemo && project.liveDemo !== '#'
+      ? project.liveDemo
+      : project.demo && project.demo !== '#'
+        ? project.demo
+        : null;
+    const codeUrl = project.github && project.github !== '#' ? project.github : null;
+    const statusClass = project.status.toLowerCase().replace(/\s+/g, '-');
+
+    return (
+      <motion.article
+        variants={itemVariants}
+        whileHover={{ y: -3 }}
+        className="project-showcase-card"
+      >
+        <div className="project-showcase-preview">
+          <div className="project-preview-placeholder" aria-hidden="true">
+            <Monitor size={32} />
+            <span>{project.type}</span>
+          </div>
+          {project.image && (
+            <img
+              src={project.image}
+              alt={`${project.title} screenshot`}
+              loading="lazy"
+              onError={(event) => { event.currentTarget.style.display = 'none'; }}
+            />
+          )}
+          {project.featured && <span className="project-featured-label">Featured</span>}
+        </div>
+        <div className={`project-status-rail ${statusClass}`} />
+
+        <div className="project-showcase-content">
+          <div className="project-showcase-heading">
+            <div>
+              <span className="project-category-label">{project.category}</span>
+              <h3>{project.title}</h3>
             </div>
+            <span className={`project-status-label ${statusClass}`}>{project.status}</span>
           </div>
-        )}
-        
-        {/* Overlay on Hover */}
-        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
-          {project.github && (
-            <motion.a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
-              aria-label="View source code"
-            >
-              <Github size={20} />
-            </motion.a>
-          )}
-          {project.demo && (
-            <motion.a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
-              aria-label="View live demo"
-            >
-              <ExternalLink size={20} />
-            </motion.a>
-          )}
-        </div>
 
-        {/* Featured Badge */}
-        {project.featured && (
-          <div className="absolute top-4 right-4 bg-yellow-500 text-yellow-900 px-3 py-1 rounded-full text-sm font-medium">
-            Featured
+          <p className="project-showcase-description">{project.description}</p>
+
+          <div className="project-showcase-tags">
+            {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
           </div>
-        )}
-      </div>
 
-      {/* Project Content */}
-      <div className="p-6">
-        <div className="flex items-start justify-between mb-3">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-            {project.title}
-          </h3>
-          <span className="px-2 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-xs rounded-full">
-            {project.category}
-          </span>
+          <div className="project-showcase-actions">
+            <details className="project-details">
+              <summary>Project details <ExternalLink size={15} /></summary>
+              <div className="project-details-panel">
+                <p>{project.longDescription}</p>
+                <ul>
+                  {project.features.map((feature) => <li key={feature}>{feature}</li>)}
+                </ul>
+              </div>
+            </details>
+            {demoUrl && (
+              <a href={demoUrl} target="_blank" rel="noopener noreferrer" className="project-showcase-action">
+                View Project <ExternalLink size={15} />
+              </a>
+            )}
+            {codeUrl && (
+              <a href={codeUrl} target="_blank" rel="noopener noreferrer" className="project-code-link">
+                <Github size={15} /> Code
+              </a>
+            )}
+          </div>
         </div>
-        
-        <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
-          {project.description}
-        </p>
-
-        {/* Technologies */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-2 py-1 bg-gray-100 dark:bg-dark-800 text-gray-700 dark:text-gray-300 text-xs rounded-md"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        {/* Links */}
-        <div className="flex space-x-4">
-          {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-            >
-              <Github size={16} />
-              <span className="text-sm">Code</span>
-            </a>
-          )}
-          {project.demo && (
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-            >
-              <ExternalLink size={16} />
-              <span className="text-sm">Demo</span>
-            </a>
-          )}
-        </div>
-      </div>
-    </motion.div>
-  );
+      </motion.article>
+    );
+  };
 
   return (
-    <section ref={ref} className="section bg-primary">
-      <div className="section-header">
+    <section ref={ref} className="section bg-primary projects-section">
+      <div className="projects-content">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          {/* Section Header */}
-          <motion.div variants={itemVariants}>
-            <h2 className="section-title">
-              My <span className="text-gradient">Projects</span>
+          <motion.div variants={itemVariants} className="projects-heading">
+            <span className="projects-eyebrow">Portfolio</span>
+            <h2 className="projects-display-title">
+              Systems that solve <em>real problems.</em>
             </h2>
-            <p className="section-subtitle">
-              A showcase of my work spanning full-stack development, network security, and system administration
+            <p className="projects-summary">
+              Selected software, infrastructure, and security work from my portfolio.
             </p>
-          </motion.div>
-
-          {/* Filter Buttons */}
-          <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map((category) => (
-              <motion.button
-                key={category}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setFilter(category)}
-                className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                  filter === category
-                    ? 'bg-primary-600 text-white shadow-lg'
-                    : 'bg-gray-100 dark:bg-dark-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-700'
-                }`}
-              >
-                {category}
-              </motion.button>
-            ))}
           </motion.div>
 
           {/* Projects Grid */}
           <motion.div
             layout
-            className="projects-grid"
+            className="project-showcase-grid"
           >
-            {filteredProjects.map((project) => (
+            {projects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
           </motion.div>

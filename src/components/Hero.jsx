@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, Download, Mail, Github, Linkedin } from 'lucide-react';
-import { personalInfo } from '../data/portfolio';
+import { ArrowDown, ArrowUpRight, Download, Mail, Github, Linkedin, MapPin } from 'lucide-react';
+import { personalInfo, projects } from '../data/portfolio';
 
 const Hero = () => {
   const socialLinks = [
     { icon: Github, href: personalInfo.social.github, label: 'GitHub', color: 'hover:text-gray-800' },
-    { icon: Linkedin, href: personalInfo.social.linkedin, label: 'LinkedIn', color: 'hover:text-blue-600' },
+    { icon: Linkedin, href: personalInfo.social.linkedin, label: 'LinkedIn', color: 'hover:text-primary-600' },
     { icon: Mail, href: personalInfo.social.email, label: 'Email', color: 'hover:text-green-600' }
   ];
 
@@ -58,6 +58,10 @@ const Hero = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const handleViewProjects = () => {
+    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className="hero">
       {/* Background Decorative Elements */}
@@ -68,138 +72,122 @@ const Hero = () => {
       </div>
 
       <div className="container mx-auto px-4 py-20 relative z-10">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="text-center max-w-4xl mx-auto"
-        >
-          {/* Profile Image */}
+        <div className="hero-layout">
           <motion.div
-            variants={itemVariants}
-            className="mb-8"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="hero-intro"
           >
-            <motion.div 
-              className="hero-avatar"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <div className="hero-avatar-inner overflow-hidden">
-                <img 
-                  src="/images/img.jpg?v=1" 
-                  alt={personalInfo.name} 
-                  className="w-full h-full object-cover object-center rounded-full transition-transform duration-300 hover:scale-110"
+            <motion.div variants={itemVariants} className="hero-avatar hero-avatar-compact">
+              <div className="hero-avatar-inner">
+                <img
+                  src="/images/img.jpg?v=1"
+                  alt={personalInfo.name}
+                  className="w-full h-full object-cover object-center rounded-full"
                   loading="eager"
-                  onLoad={(e) => {
-                    console.log('Image loaded successfully');
-                    e.target.nextSibling.style.display = 'none';
+                  onLoad={(event) => {
+                    event.currentTarget.nextSibling.style.display = 'none';
                   }}
-                  onError={(e) => {
-                    console.log('Image failed to load, showing fallback');
-                    e.target.style.display = 'none';
-                    e.target.nextSibling.style.display = 'flex';
+                  onError={(event) => {
+                    event.currentTarget.style.display = 'none';
+                    event.currentTarget.nextSibling.style.display = 'flex';
                   }}
                 />
-                <div className="w-full h-full flex items-center justify-center text-4xl font-bold text-primary-600" style={{display: 'flex'}}>
-                  D
-                </div>
+                <div className="hero-avatar-fallback">D</div>
               </div>
-              {/* Floating animation dots */}
-              <div className="absolute -top-2 -right-2 w-4 h-4 bg-green-500 rounded-full animate-pulse shadow-lg"></div>
-              <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-blue-500 rounded-full animate-bounce shadow-md"></div>
             </motion.div>
-          </motion.div>
 
-          {/* Main Heading */}
-          <motion.h1
-            variants={itemVariants}
-            className="hero-title"
-          >
-            <span>Hi, I'm </span>
-            <span className="text-gradient">{personalInfo.name}</span>
-          </motion.h1>
+            <motion.div variants={itemVariants} className="hero-location">
+              <MapPin size={15} aria-hidden="true" />
+              <span>{personalInfo.location}</span>
+            </motion.div>
 
-          {/* Title */}
-          <motion.h2
-            variants={itemVariants}
-            className="hero-subtitle"
-          >
-            {personalInfo.title}
-          </motion.h2>
+            <motion.h1 variants={itemVariants} className="hero-title">
+              <span className="hero-title-name">{personalInfo.name}</span>
+              <span className="hero-title-focus">{personalInfo.title}</span>
+            </motion.h1>
 
-          {/* Bio/Description */}
-          <motion.p
-            variants={itemVariants}
-            className="hero-description"
-          >
-            {personalInfo.bio}
-          </motion.p>
+            <motion.p variants={itemVariants} className="hero-description">
+              {personalInfo.bio}
+            </motion.p>
 
-          {/* CTA Buttons */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
-          >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handleDownloadCV}
-              className="btn btn-primary flex items-center justify-center gap-2"
-            >
-              <Download size={20} />
-              Download CV
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handleContactMe}
-              className="btn btn-secondary flex items-center justify-center gap-2"
-            >
-              <Mail size={20} />
-              Contact Me
-            </motion.button>
-          </motion.div>
-
-          {/* Social Links */}
-          <motion.div
-            variants={itemVariants}
-            className="flex justify-center space-x-6 mb-12"
-          >
-            {socialLinks.map(({ icon: Icon, href, label, color }) => (
-              <motion.a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, y: -2 }}
-                whileTap={{ scale: 0.9 }}
-                className={`social-icon ${color}`}
-                aria-label={label}
+            <motion.div variants={itemVariants} className="hero-actions">
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={handleViewProjects}
+                className="btn btn-primary flex items-center justify-center gap-2"
               >
-                <Icon size={24} />
-              </motion.a>
-            ))}
-          </motion.div>
+                View My Work <ArrowDown size={18} />
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={handleContactMe}
+                className="btn btn-secondary flex items-center justify-center gap-2"
+              >
+                <Mail size={18} /> Contact Me
+              </motion.button>
+              <button onClick={handleDownloadCV} className="hero-cv-link">
+                <Download size={16} /> Download CV
+              </button>
+            </motion.div>
 
-          {/* Scroll Indicator */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-col items-center"
-          >
-            <p className="text-sm text-secondary mb-2">Scroll to explore</p>
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 2 }}
-              className="scroll-indicator"
-            >
-              <motion.div
-                animate={{ y: [0, 12, 0] }}
-                transition={{ repeat: Infinity, duration: 2 }}
-                className="scroll-indicator-dot"
-              />
+            <motion.div variants={itemVariants} className="hero-socials">
+              {socialLinks.map(({ icon: Icon, href, label, color }) => (
+                <motion.a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -2 }}
+                  className={`social-icon ${color}`}
+                  aria-label={label}
+                >
+                  <Icon size={20} />
+                </motion.a>
+              ))}
             </motion.div>
           </motion.div>
-        </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="hero-work"
+          >
+            <motion.div variants={itemVariants} className="hero-work-heading">
+              <span className="hero-work-kicker">Selected work</span>
+              <span className="hero-work-count">{projects.filter((project) => project.featured).length} projects</span>
+            </motion.div>
+
+            <div className="hero-project-list">
+              {projects.filter((project) => project.featured).slice(0, 3).map((project) => (
+                <motion.article
+                  key={project.id}
+                  variants={itemVariants}
+                  className="hero-project-card"
+                >
+                  <div className="hero-project-topline">
+                    <span className="hero-project-mark" aria-hidden="true">{String(project.id).padStart(2, '0')}</span>
+                    <span className={`hero-project-status ${project.status.toLowerCase().replace(/\s+/g, '-')}`}>
+                      {project.status}
+                    </span>
+                  </div>
+                  <h2>{project.title}</h2>
+                  <p>{project.description}</p>
+                  <div className="hero-project-tech">
+                    {project.technologies.slice(0, 3).map((technology) => (
+                      <span key={technology}>{technology}</span>
+                    ))}
+                  </div>
+                  <ArrowUpRight className="hero-project-arrow" size={18} aria-hidden="true" />
+                </motion.article>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

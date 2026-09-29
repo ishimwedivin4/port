@@ -145,7 +145,7 @@ export const projects = [
     title: "Grocery Management System",
     description: "Full-stack application with advanced authentication, role-based access control, and multilingual support.",
     longDescription: "A comprehensive grocery management system built with Spring Boot backend and React frontend. Features secure authentication, role-based access control, multilingual UI support, and complete CRUD operations for inventory management.",
-    image: "/images/img.jpg",
+    image: null,
     technologies: ["Spring Boot", "React", "PostgreSQL", "JWT Auth", "REST APIs", "Multilingual Support"],
     tags: ["Spring Boot", "React", "PostgreSQL", "JWT", "Multilingual"],
     features: [

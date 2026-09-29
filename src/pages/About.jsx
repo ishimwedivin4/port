@@ -49,7 +49,7 @@ const About = () => {
   ];
 
   return (
-    <section ref={ref} className="section bg-secondary">
+    <section ref={ref} className="section bg-secondary about-section">
       <div className="section-header">
         <motion.div
           variants={containerVariants}
@@ -66,98 +66,75 @@ const About = () => {
             </p>
           </motion.div>
 
-          <div className="content-grid mb-16">
-            {/* Bio Section */}
-            <motion.div variants={itemVariants} className="space-y-6 fade-in-on-scroll">
-              <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
-                <MapPin size={20} />
-                <span>{personalInfo.location}</span>
-              </div>
-              
-              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                {personalInfo.bio}
-              </p>
-
-              {/* Quick Facts */}
-              <div className="grid grid-cols-2 gap-4 pt-4">
-                <div className="stat-card">
-                  <div className="text-2xl font-bold text-primary-600 mb-1">3+</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Years Coding</div>
+          <div className="about-overview mb-16">
+            <motion.div variants={itemVariants} className="about-story">
+              <span className="about-eyebrow">A little about me</span>
+              <p>{personalInfo.bio}</p>
+              <div className="about-facts">
+                <div>
+                  <MapPin size={17} aria-hidden="true" />
+                  <span>{personalInfo.location}</span>
                 </div>
-                <div className="stat-card">
-                  <div className="text-2xl font-bold text-primary-600 mb-1">10+</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Projects Built</div>
+                <div>
+                  <GraduationCap size={18} aria-hidden="true" />
+                  <span>{education[0].degree}</span>
                 </div>
               </div>
             </motion.div>
 
-            {/* Highlights */}
-            <motion.div variants={itemVariants} className="space-y-6">
-              {highlights.map((highlight, index) => (
-                <motion.div
-                  key={highlight.title}
-                  variants={itemVariants}
-                  className="flex-item-container fade-in-on-scroll"
-                >
-                  <div className="w-12 h-12 bg-primary-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <highlight.icon size={24} className="text-white" />
-                  </div>
+            <motion.div variants={itemVariants} className="about-focus-list about-focus-card">
+              <h3>What I focus on</h3>
+              {highlights.map((highlight) => (
+                <div key={highlight.title} className="about-focus-item">
+                  <highlight.icon size={21} aria-hidden="true" />
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                      {highlight.title}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-400">
-                      {highlight.description}
-                    </p>
+                    <h4>{highlight.title}</h4>
+                    <p>{highlight.description}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </motion.div>
           </div>
 
           {/* Education & Experience */}
-          <div className="content-grid">
+          <div className="about-history-grid">
             {/* Education */}
-            <motion.div variants={itemVariants} className="fade-in-on-scroll">
-              <div className="flex items-center space-x-2 mb-6">
+            <motion.article variants={itemVariants} className="about-history-card fade-in-on-scroll">
+              <div className="about-history-heading">
                 <GraduationCap size={24} className="text-primary-600" />
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Education</h3>
+                <h3>Education</h3>
               </div>
               
-              <div className="space-y-6">
+              <div className="about-history-entries">
                 {education.map((edu) => (
-                  <div key={edu.id} className="border-l-4 border-primary-600 pl-6 pb-6">
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-                      {edu.degree}
-                    </h4>
-                    <p className="text-primary-600 font-medium mb-1">{edu.institution}</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                  <div key={edu.id} className="about-history-entry">
+                    <h4>{edu.degree}</h4>
+                    <p className="about-history-emphasis">{edu.institution}</p>
+                    <p className="about-history-meta">
                       {edu.location} • {edu.period}
                     </p>
-                    <p className="text-gray-700 dark:text-gray-300">{edu.description}</p>
+                    <p className="about-history-description">{edu.description}</p>
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </motion.article>
 
             {/* Experience */}
-            <motion.div variants={itemVariants} className="fade-in-on-scroll">
-              <div className="flex items-center space-x-2 mb-6">
+            <motion.article variants={itemVariants} className="about-history-card fade-in-on-scroll">
+              <div className="about-history-heading">
                 <Briefcase size={24} className="text-primary-600" />
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Experience</h3>
+                <h3>Experience</h3>
               </div>
               
-              <div className="space-y-6">
+              <div className="about-history-entries">
                 {experience.map((exp) => (
-                  <div key={exp.id} className="border-l-4 border-primary-600 pl-6 pb-6">
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-                      {exp.title}
-                    </h4>
-                    <p className="text-primary-600 font-medium mb-1">{exp.company}</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                  <div key={exp.id} className="about-history-entry">
+                    <h4>{exp.title}</h4>
+                    <p className="about-history-emphasis">{exp.company}</p>
+                    <p className="about-history-meta">
                       {exp.location} • {exp.period}
                     </p>
-                    <p className="text-gray-700 dark:text-gray-300 mb-3">{exp.description}</p>
+                    <p className="about-history-description">{exp.description}</p>
                     
                     <div className="flex flex-wrap gap-2">
                       {exp.skills.map((skill) => (
@@ -172,7 +149,7 @@ const About = () => {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </motion.article>
           </div>
 
           {/* Certifications Section */}
@@ -182,30 +159,24 @@ const About = () => {
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Certifications</h3>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {certifications.map((cert) => (
-                <motion.div
+            <div className="certification-grid">
+              {certifications.map((cert, index) => (
+                <motion.article
                   key={cert.id}
-                  whileHover={{ scale: 1.02, y: -4 }}
-                  className="bg-white dark:bg-dark-800 rounded-xl p-6 border border-gray-200 dark:border-dark-700 shadow-sm hover:shadow-lg transition-all duration-300"
+                  whileHover={{ y: -3 }}
+                  className="certification-card"
                 >
-                  <div className="flex items-center mb-4">
-                    <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mr-3">
-                      <span className="text-lg">{cert.icon}</span>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900 dark:text-white text-sm">
-                        {cert.name}
-                      </h4>
-                      <p className="text-xs text-gray-600 dark:text-gray-400">
-                        {cert.issuer} • {cert.year}
-                      </p>
-                    </div>
+                  <div className="certification-card-top">
+                    <span className="certification-icon" aria-hidden="true">{cert.icon}</span>
+                    <span className="certification-year">{cert.year}</span>
                   </div>
-                  <p className="text-sm text-gray-700 dark:text-gray-300">
-                    {cert.description}
-                  </p>
-                </motion.div>
+                  <span className="certification-index">
+                    Credential {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <h4>{cert.name}</h4>
+                  <p className="certification-issuer">{cert.issuer}</p>
+                  <p className="certification-description">{cert.description}</p>
+                </motion.article>
               ))}
             </div>
           </motion.div>
