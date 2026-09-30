@@ -82,7 +82,7 @@ const Hero = () => {
             <motion.div variants={itemVariants} className="hero-avatar hero-avatar-compact">
               <div className="hero-avatar-inner">
                 <img
-                  src="/images/img.jpg?v=1"
+                  src="/images/img.jpeg"
                   alt={personalInfo.name}
                   className="w-full h-full object-cover object-center rounded-full"
                   loading="eager"
