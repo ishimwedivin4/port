@@ -1095,6 +1095,15 @@ a:hover {
   overflow: hidden;
 }
 
+.hero-avatar-inner img {
+  transition: transform 0.35s ease;
+}
+
+.hero-avatar:hover .hero-avatar-inner img,
+.hero-avatar-near .hero-avatar-inner img {
+  transform: scale(1.2);
+}
+
 .hero-title {
   font-size: clamp(var(--text-4xl), 6vw, var(--text-7xl));
   font-weight: 800;
