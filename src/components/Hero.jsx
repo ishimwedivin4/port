@@ -74,7 +74,7 @@ const Hero = () => {
         <div className="hero-blob hero-blob-3"></div>
       </div>
 
-      <div className="container mx-auto px-4 py-20 relative z-10">
+      <div className="container mx-auto px-4 py-6 md:py-10 relative z-10">
         <div className="hero-layout">
           <motion.div
             variants={containerVariants}

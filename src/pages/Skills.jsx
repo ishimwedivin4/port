@@ -1,11 +1,9 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Code2, Monitor, Server, ShieldCheck } from 'lucide-react';
 import { skills } from '../data/portfolio';
 
 const Skills = () => {
-  const cursorRef = useRef(null);
-
   const categoryPresentation = {
     'Network & Security': {
       icon: ShieldCheck,
@@ -25,17 +23,6 @@ const Skills = () => {
     }
   };
 
-  const handlePointerMove = (event) => {
-    if (event.pointerType !== 'mouse' || !cursorRef.current) return;
-    cursorRef.current.style.setProperty('--cursor-x', `${event.clientX}px`);
-    cursorRef.current.style.setProperty('--cursor-y', `${event.clientY}px`);
-    cursorRef.current.classList.add('is-visible');
-  };
-
-  const handlePointerLeave = () => {
-    cursorRef.current?.classList.remove('is-visible');
-  };
-
   const tools = [
     'VS Code', 'IntelliJ IDEA', 'Eclipse', 'Git', 'Postman',
     'Wireshark', 'Nmap', 'Cisco Packet Tracer', 'GNS3',
@@ -45,11 +32,7 @@ const Skills = () => {
   ];
 
   return (
-    <section
-      className="section bg-secondary skills-section"
-      onPointerMove={handlePointerMove}
-      onPointerLeave={handlePointerLeave}
-    >
+    <section className="section bg-secondary skills-section">
       <div className="skills-content">
         <div className="skills-heading">
           <motion.span
@@ -115,9 +98,6 @@ const Skills = () => {
         </div>
       </div>
 
-      <span ref={cursorRef} className="skills-cursor" aria-hidden="true">
-        <span />
-      </span>
     </section>
   );
 };

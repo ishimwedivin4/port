@@ -976,12 +976,13 @@ a:hover {
 
 /* Premium Hero Section */
 .hero {
-  min-height: 100vh;
+  min-height: calc(100vh - 4rem);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
+  padding-top: 0.5rem;
   background: linear-gradient(135deg, 
     var(--bg-primary) 0%, 
     rgba(var(--primary-50), 0.5) 50%, 
@@ -1113,10 +1114,11 @@ a:hover {
 .hero-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
-  gap: clamp(1.25rem, 2vw, 2.5rem);
+  gap: clamp(1.05rem, 1.6vw, 2rem);
   align-items: start;
   width: 100%;
   margin: 0 auto;
+  padding-top: 0.25rem;
 }
 
 .hero-intro {
@@ -2279,9 +2281,9 @@ a:hover {
   border-color: rgba(0, 220, 168, 0.12);
 }
 
-.skills-cursor {
+.portfolio-cursor {
   position: fixed;
-  z-index: 1100;
+  z-index: 1200;
   top: 0;
   left: 0;
   width: 2.25rem;
@@ -2291,14 +2293,19 @@ a:hover {
   opacity: 0;
   pointer-events: none;
   transform: translate3d(var(--cursor-x, -100px), var(--cursor-y, -100px), 0) translate(-50%, -50%);
-  transition: opacity var(--duration-150) var(--ease-out);
+  transition: opacity var(--duration-150) var(--ease-out), transform var(--duration-150) var(--ease-out), box-shadow var(--duration-150) var(--ease-out);
+  box-shadow: 0 0 0 1px rgba(0, 229, 176, 0.25), 0 0 18px rgba(0, 229, 176, 0.2);
 }
 
-.skills-cursor.is-visible {
+.portfolio-cursor.is-visible {
   opacity: 1;
 }
 
-.skills-cursor > span {
+.portfolio-cursor.is-pressed {
+  transform: translate3d(var(--cursor-x, -100px), var(--cursor-y, -100px), 0) translate(-50%, -50%) scale(0.85);
+}
+
+.portfolio-cursor > span {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -2310,14 +2317,15 @@ a:hover {
 }
 
 @media (pointer: fine) {
-  .skills-section,
-  .skills-section * {
+  html,
+  body,
+  body * {
     cursor: none;
   }
 }
 
 @media (pointer: coarse) {
-  .skills-cursor {
+  .portfolio-cursor {
     display: none;
   }
 }
