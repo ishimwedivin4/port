@@ -4,7 +4,6 @@ import { ArrowDown, ArrowUpRight, Download, Mail, Github, Linkedin, MapPin } fro
 import { personalInfo, projects } from '../data/portfolio';
 
 const Hero = () => {
-  const [isAvatarNear, setIsAvatarNear] = React.useState(false);
   const socialLinks = [
     { icon: Github, href: personalInfo.social.github, label: 'GitHub', color: 'hover:text-gray-800' },
     { icon: Linkedin, href: personalInfo.social.linkedin, label: 'LinkedIn', color: 'hover:text-primary-600' },
@@ -64,19 +63,7 @@ const Hero = () => {
   };
 
   return (
-    <section
-      className="hero"
-      onPointerMove={(event) => {
-        const avatar = event.currentTarget.querySelector('.hero-avatar');
-        if (!avatar) return;
-
-        const bounds = avatar.getBoundingClientRect();
-        const distanceX = Math.max(bounds.left - event.clientX, 0, event.clientX - bounds.right);
-        const distanceY = Math.max(bounds.top - event.clientY, 0, event.clientY - bounds.bottom);
-        setIsAvatarNear(Math.hypot(distanceX, distanceY) <= 72);
-      }}
-      onPointerLeave={() => setIsAvatarNear(false)}
-    >
+    <section className="hero">
       {/* Background Decorative Elements */}
       <div className="hero-bg">
         <div className="hero-blob hero-blob-1"></div>
@@ -92,7 +79,7 @@ const Hero = () => {
             animate="visible"
             className="hero-intro"
           >
-            <motion.div variants={itemVariants} className={`hero-avatar hero-avatar-compact${isAvatarNear ? ' hero-avatar-near' : ''}`}>
+            <motion.div variants={itemVariants} className="hero-avatar hero-avatar-compact">
               <div className="hero-avatar-inner">
                 <img
                   src="/images/img.jpeg"

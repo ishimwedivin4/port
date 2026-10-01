@@ -200,8 +200,8 @@ const Contact = () => {
                   Send a Message
                 </h3>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="name" className="form-label">
                         Name *
@@ -260,7 +260,7 @@ const Contact = () => {
                       value={formData.message}
                       onChange={handleInputChange}
                       required
-                      rows={6}
+                      rows={4}
                       className="form-textarea"
                       placeholder="Tell me about your project or what you'd like to discuss..."
                     />
@@ -271,7 +271,7 @@ const Contact = () => {
                     disabled={isSubmitting}
                     whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
                     whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                    className={`w-full btn-primary flex items-center justify-center space-x-2 py-4 text-lg font-semibold ${
+                    className={`w-full btn-primary flex items-center justify-center space-x-2 py-3 text-base font-semibold ${
                       isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
                     }`}
                   >

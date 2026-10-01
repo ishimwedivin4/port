@@ -1045,8 +1045,8 @@ a:hover {
 }
 
 .hero-avatar {
-  width: 10rem;
-  height: 10rem;
+  width: 18rem;
+  height: 18rem;
   margin: 0 auto var(--space-8);
   background: linear-gradient(135deg, var(--accent-emerald), var(--primary-700));
   border-radius: 50%;
@@ -1097,11 +1097,11 @@ a:hover {
 
 .hero-avatar-inner img {
   transition: transform 0.35s ease;
+  transform: scale(1.25);
 }
 
-.hero-avatar:hover .hero-avatar-inner img,
-.hero-avatar-near .hero-avatar-inner img {
-  transform: scale(1.2);
+.hero-avatar:hover .hero-avatar-inner img {
+  transform: scale(1.35);
 }
 
 .hero-title {
@@ -1145,8 +1145,8 @@ a:hover {
 }
 
 .hero-avatar-compact {
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 8rem;
+  height: 8rem;
   margin: 0 0 var(--space-4);
   padding: 3px;
 }
@@ -3348,8 +3348,13 @@ html {
 .contact-layout {
   display: grid;
   grid-template-columns: minmax(17rem, 0.8fr) minmax(0, 1.2fr);
-  align-items: start;
+  align-items: stretch;
   gap: var(--space-5);
+}
+
+.contact-info-column,
+.contact-form-column {
+  display: flex;
 }
 
 .contact-info-column,
@@ -3361,9 +3366,24 @@ html {
   border-radius: var(--radius-lg);
 }
 
+.contact-info-column {
+  height: 100%;
+}
+
 .contact-info-column > div:first-child {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.contact-form-column {
+  min-height: 100%;
+}
+
+.contact-form-card {
+  flex: 1;
+  height: 100%;
 }
 
 .contact-intro-title,
@@ -3459,6 +3479,9 @@ html {
 }
 
 .contact-form-card {
+  max-width: 30rem;
+  margin: 0 auto;
+  padding: 0.9rem;
   background: #111217;
   box-shadow: none;
 }
@@ -3466,16 +3489,23 @@ html {
 .contact-form-title {
   display: flex;
   align-items: center;
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-3);
+  font-size: 1.1rem;
 }
 
 .contact-form-card .form-input,
 .contact-form-card .form-textarea {
+  padding: 0.6rem 0.75rem;
   color: #f4f4f7;
   background: #0b0c10;
   border: 1px solid #35363d;
   border-radius: var(--radius-md);
   box-shadow: none;
+  font-size: 0.92rem;
+}
+
+.contact-form-card .form-textarea {
+  min-height: 5.8rem;
 }
 
 .contact-form-card .form-input:focus,
@@ -3491,7 +3521,9 @@ html {
 }
 
 .contact-form-card .form-label {
+  margin-bottom: 0.35rem;
   color: #d4d4d8;
+  font-size: 0.82rem;
 }
 
 .contact-cta-wrap {
