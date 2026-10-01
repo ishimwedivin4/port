@@ -4,6 +4,9 @@ import { ArrowDown, ArrowUpRight, Download, Mail, Github, Linkedin, MapPin } fro
 import { personalInfo, projects } from '../data/portfolio';
 
 const Hero = () => {
+  const heroSummary = 'IT student focused on networking, security, and practical full-stack systems.';
+  const featuredProjects = projects.filter((project) => project.featured).slice(0, 3);
+
   const socialLinks = [
     { icon: Github, href: personalInfo.social.github, label: 'GitHub', color: 'hover:text-gray-800' },
     { icon: Linkedin, href: personalInfo.social.linkedin, label: 'LinkedIn', color: 'hover:text-primary-600' },
@@ -79,38 +82,64 @@ const Hero = () => {
             animate="visible"
             className="hero-intro"
           >
-            <motion.div variants={itemVariants} className="hero-avatar hero-avatar-compact">
-              <div className="hero-avatar-inner">
-                <img
-                  src="/images/img.jpeg"
-                  alt={personalInfo.name}
-                  className="w-full h-full object-cover object-center rounded-full"
-                  loading="eager"
-                  onLoad={(event) => {
-                    event.currentTarget.nextSibling.style.display = 'none';
-                  }}
-                  onError={(event) => {
-                    event.currentTarget.style.display = 'none';
-                    event.currentTarget.nextSibling.style.display = 'flex';
-                  }}
-                />
-                <div className="hero-avatar-fallback">D</div>
+            <motion.div variants={itemVariants} className="hero-profile-row">
+              <motion.div variants={itemVariants} className="hero-avatar hero-avatar-compact">
+                <div className="hero-avatar-inner">
+                  <img
+                    src="/images/img.jpeg"
+                    alt={personalInfo.name}
+                    className="w-full h-full object-cover object-center rounded-full"
+                    loading="eager"
+                    onLoad={(event) => {
+                      event.currentTarget.nextSibling.style.display = 'none';
+                    }}
+                    onError={(event) => {
+                      event.currentTarget.style.display = 'none';
+                      event.currentTarget.nextSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="hero-avatar-fallback">D</div>
+                </div>
+              </motion.div>
+
+              <div className="hero-profile-copy">
+                <h1 className="hero-title-name">{personalInfo.name}</h1>
+                <div className="hero-title-focus">{personalInfo.title}</div>
+                <div className="hero-location">
+                  <MapPin size={15} aria-hidden="true" />
+                  <span>{personalInfo.location}</span>
+                </div>
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="hero-location">
-              <MapPin size={15} aria-hidden="true" />
-              <span>{personalInfo.location}</span>
-            </motion.div>
-
-            <motion.h1 variants={itemVariants} className="hero-title">
-              <span className="hero-title-name">{personalInfo.name}</span>
-              <span className="hero-title-focus">{personalInfo.title}</span>
-            </motion.h1>
-
             <motion.p variants={itemVariants} className="hero-description">
-              {personalInfo.bio}
+              {heroSummary}
             </motion.p>
+
+            <motion.div variants={itemVariants} className="hero-terminal-window">
+              <div className="hero-terminal-header">
+                <div className="hero-terminal-dots">
+                  <span className="hero-terminal-dot red" />
+                  <span className="hero-terminal-dot yellow" />
+                  <span className="hero-terminal-dot green" />
+                </div>
+                <div className="hero-terminal-title">{personalInfo.name.toLowerCase().replace(/\s+/g, '-') }@portfolio:~</div>
+              </div>
+
+              <div className="hero-terminal-body">
+                <div className="hero-terminal-line"><span className="hero-terminal-prompt">$</span> whoami</div>
+                <div className="hero-terminal-line hero-terminal-user">{personalInfo.name}</div>
+                <div className="hero-terminal-line"><span className="hero-terminal-prompt">$</span> location</div>
+                <div className="hero-terminal-line hero-terminal-user">{personalInfo.location}</div>
+                <div className="hero-terminal-line"><span className="hero-terminal-prompt">$</span> ls /projects/</div>
+                {featuredProjects.map((project) => (
+                  <div key={project.id} className="hero-terminal-line hero-terminal-list">[{project.status === 'Deployed' ? 'LIVE' : project.status === 'Completed' ? 'DONE' : 'TEST'}] {project.title}</div>
+                ))}
+                <div className="hero-terminal-line"><span className="hero-terminal-prompt">$</span> echo &quot;Ready to build your system?&quot;</div>
+                <div className="hero-terminal-line hero-terminal-success">Yes. Contact me and let&apos;s ship it.</div>
+                <div className="hero-terminal-line hero-terminal-cursor"><span className="hero-terminal-caret">|</span></div>
+              </div>
+            </motion.div>
 
             <motion.div variants={itemVariants} className="hero-actions">
               <motion.button
@@ -159,11 +188,11 @@ const Hero = () => {
           >
             <motion.div variants={itemVariants} className="hero-work-heading">
               <span className="hero-work-kicker">Selected work</span>
-              <span className="hero-work-count">{projects.filter((project) => project.featured).length} projects</span>
+              <span className="hero-work-count">{featuredProjects.length} projects</span>
             </motion.div>
 
             <div className="hero-project-list">
-              {projects.filter((project) => project.featured).slice(0, 3).map((project) => (
+              {featuredProjects.map((project) => (
                 <motion.article
                   key={project.id}
                   variants={itemVariants}
