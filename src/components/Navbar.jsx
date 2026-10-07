@@ -57,7 +57,11 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               className="logo-icon"
             >
-              <span className="logo-monogram">ID</span>
+              <img
+                src="/images/modern-blue-id-icon.png"
+                alt=""
+                className="logo-image"
+              />
             </motion.div>
             <span className="logo">Divin</span>
           </Link>

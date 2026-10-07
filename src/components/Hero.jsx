@@ -104,7 +104,7 @@ const Hero = () => {
 
               <div className="hero-profile-copy">
                 <h1 className="hero-title-name">{personalInfo.name}</h1>
-                <div className="hero-title-focus">{personalInfo.title}</div>
+                <p className="hero-title-focus">Network &amp; Software Developer Portfolio</p>
                 <div className="hero-location">
                   <MapPin size={15} aria-hidden="true" />
                   <span>{personalInfo.location}</span>
